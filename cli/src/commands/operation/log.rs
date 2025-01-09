@@ -130,7 +130,7 @@ fn do_op_log(
                 ui,
                 &language,
                 &get_node_template(graph_style, settings)?,
-                OperationTemplateLanguage::wrap_operation,
+                OperationTemplateLanguage::wrap_operation_opt,
             )?
             .labeled("node");
     }
@@ -212,7 +212,7 @@ fn do_op_log(
                 let mut formatter = ui.new_formatter(&mut buffer);
                 show(ui, formatter.as_mut(), &op, &within_graph)?;
             }
-            let node_symbol = format_template(ui, &op, &op_node_template);
+            let node_symbol = format_template(ui, &Some(op), &op_node_template);
             graph.add_node(
                 op.id(),
                 &edges,
